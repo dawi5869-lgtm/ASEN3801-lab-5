@@ -47,3 +47,33 @@ a = ones(size(t,1));
 b = a(1,:);
 c = (controls*b);
 PlotAircraftSim(t, out, c, fig, '-b')
+
+%%% 3.1
+%tSpan = 0:3;
+%stateVector = [0; 0; -1800; 0; 0.02780*180/pi; 0; 20.99; 0; 0.5837; 0; 0; 0];
+%controls = [5; 2; -13; 0.3];
+%wind = [0; 0; 0];
+%
+%%Simulate the trim dynamics
+%[t,out] = ode45(@(t,output) AircraftEOMDoublet(tSpan, output, controls, DOUBLETSIZEPLACEHOLDER, DOUBLETTIMEPLACEHOLDER, wind, aircraft_parameters),tSpan,stateVector);
+%%Make plots
+%fig = 13:18;
+%a = ones(size(t,1));
+%b = a(1,:);
+%c = (controls*b);
+%PlotAircraftSim(t, out, c, fig, '-b')
+%
+%%% 3.2
+%tSpan = 0:100;
+%stateVector = [0; 0; -1800; 0; 0.02780*180/pi; 0; 20.99; 0; 0.5837; 0; 0; 0];
+%controls = [5; 2; -13; 0.3];
+%wind = [0; 0; 0];
+%
+%%Simulate the trim dynamics
+%[t,out] = ode45(@(t,output) AircraftEOMDoublet(tSpan, output, controls, DOUBLETSIZEPLACEHOLDER, DOUBLETTIMEPLACEHOLDER, wind, aircraft_parameters),tSpan,stateVector);
+%%Make plots
+%fig = 13:18;
+%a = ones(size(t,1));
+%b = a(1,:);
+%c = (controls*b);
+%PlotAircraftSim(t, out, c, fig, '-b')
