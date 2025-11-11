@@ -1,16 +1,14 @@
 function [xdot] = AircraftEOM(time, aircraft_state, aircraft_surfaces, wind_inertial, aircraft_parameters)
-x = aircraft_state(0); %m
-y = aircraft_state(1); %m
-z = aircraft_state(2); %m
-phi = aircraft_state(3); %deg
-theta = aircraft_state(4); %deg
-psi = aircraft_state(5); %deg
-u = aircraft_state(6); %m/s
-v = aircraft_state(7); %m/s
-w = aircraft_state(8); %m/s
-p = aircraft_state(9); %deg/s
-q = aircraft_state(10); %deg/s
-r = aircraft_state(11); %deg/s
+z = aircraft_state(3); %m
+phi = aircraft_state(4); %deg
+theta = aircraft_state(5); %deg
+psi = aircraft_state(6); %deg
+u = aircraft_state(7); %m/s
+v = aircraft_state(8); %m/s
+w = aircraft_state(9); %m/s
+p = aircraft_state(10); %deg/s
+q = aircraft_state(11); %deg/s
+r = aircraft_state(12); %deg/s
 
 g = aircraft_parameters.g; %m/s^2
 m = aircraft_parameters.m; %kg
@@ -36,12 +34,12 @@ gamma6 = Ixz/Iy;
 gamma7 = (Ix*(Ix - Iy) + Ixz^2)/gamma;
 gamma8 = Ix/gamma;
 
-position = [x, y, z]';
-orientation = [phi, theta, psi]';
+velocity = [u; v; w];
+angularVelocity = [p; q; r];
 
 %find xDot, yDot, zDot
 mat1 = [cosd(theta)*cosd(psi) (sind(phi)*sind(theta)*sind(psi) - cosd(phi)*sind(psi)) (cosd(phi)*sind(theta)*cosd(psi) - sind(phi)*sind(psi));
-    cosd(theta)*sind(psi) (sind(phi)*sind(theta)*sind(psi) + cosd(phi)*cosd(psi)) (cosd(phi)*sind(theta)*sind(psi) - sind(phi)*cosd*psi);
+    cosd(theta)*sind(psi) (sind(phi)*sind(theta)*sind(psi) + cosd(phi)*cosd(psi)) (cosd(phi)*sind(theta)*sind(psi) - sind(phi)*cosd(psi));
     -sind(theta) sind(phi)*cosd(theta) cosd(phi)*cosd(theta)];
 
 %find phiDot, thetaDot, psiDot
@@ -69,8 +67,9 @@ mat7 = [(gamma3*L + gamma4*N);
     M/Iy;
     (gamma4*L + gamma8*N)];
 
-xdot(1:3) = mat1*position;
-xdot(4:6) = mat2*orientation;
+xdot(1:3) = mat1*velocity;
+xdot(4:6) = mat2*angularVelocity;
 xdot(7:9) = mat3 + mat4 + mat5;
 xdot(10:12) = mat6 + mat7;
+xdot = xdot';
 end
