@@ -110,20 +110,20 @@ if(fig(5) >=1)
     hold off;
     
     subplot(4,1,1);hold on;
-    plot(time, control_input_array(1,:), col(5),DisplayName=dispName); ylabel('Elevator Deflection')
+    plot(time, control_input_array(1,:), col(5),DisplayName=dispName); ylabel('Elevator Deflection (deg)')
     legend('Location','northeast');
     hold off;
     
     subplot(4,1,2); hold on;
-    plot(time, control_input_array(2,:), col(5)); ylabel('Aileron Deflection')
+    plot(time, control_input_array(2,:), col(5)); ylabel('Aileron Deflection (deg)')
     hold off;
     
     subplot(4,1,3); hold on;
-    plot(time, control_input_array(3,:), col(5)); ylabel('Rudder Deflection')
+    plot(time, control_input_array(3,:), col(5)); ylabel('Rudder Deflection (deg)')
     hold off;
 
     subplot(4,1,4); hold on;
-    plot(time, control_input_array(4,:), col(5)); ylabel('Throttle Percentage'); xlabel('');
+    plot(time, control_input_array(4,:) / max(control_input_array(4,:)), col(5)); ylabel('Throttle Percentage'); xlabel('');
     hold off;
 end
 
