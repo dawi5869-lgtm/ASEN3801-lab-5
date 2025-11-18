@@ -17,7 +17,7 @@ Iy = aircraft_parameters.Iy; %kg*m^2
 Iz = aircraft_parameters.Iz; %kg*m^2
 Ixz = aircraft_parameters.Ixz; %kg*m^2
 
-density = stdatmo(-z);
+density = stdatmos(-z);
 
 [forces, moments] = AeroForcesAndMoments(aircraft_state, aircraft_surfaces, wind_inertial, density, aircraft_parameters);
 L = moments(1);
