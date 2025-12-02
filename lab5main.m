@@ -5,56 +5,56 @@ ttwistor;
 % ttwister; %for David's code
 
 % tSpan = 0:200;
-tSpan = linspace(0,200,200);
+tSpan = linspace(0,200,800);
 
-% %% 2.1
-% %set input vectors
-% stateVector = [0; 0; -1609.34; 0; 0; 0; 21; 0; 0; 0; 0; 0];
-% controls = [0; 0; 0; 0];
-% wind = [0; 0; 0];
-% 
-% %Simulate the trim dynamics
-% [t,out] = ode45(@(t,output) AircraftEOM(tSpan, output, controls, wind, aircraft_parameters),tSpan,stateVector);
-% %Make plots
-% fig = 1:6;
-% a = ones(size(t,1));
-% b = a(1,:);
-% c = (controls*b);
-% PlotAircraftSim(t, out, c, fig, '-b')
-% 
-% %% 2.2
-% %set input vectors
-% stateVector = [0; 0; -1800; 0; 0.02780*180/pi; 0; 20.99; 0; 0.5837; 0; 0; 0];
-% controls = [0.1079; 0; 0; 0.3182];
-% wind = [0; 0; 0];
-% 
-% %Simulate the trim dynamics
-% [t,out] = ode45(@(t,output) AircraftEOM(tSpan, output, controls, wind, aircraft_parameters),tSpan,stateVector);
-% %Make plots
-% fig = 7:12;
-% a = ones(size(t,1));
-% b = a(1,:);
-% c = (controls*b);
-% PlotAircraftSim(t, out, c, fig, '-b')
-% 
-% %% 2.3
-% %set input vectors
-% stateVector = [0; 0; -1800; 15; -12; 270; 19; 3; -2; 0.08; -0.2; 0];
-% controls = [5; 2; -13; 0.3];
-% wind = [0; 0; 0];
-% 
-% %Simulate the trim dynamics
-% [t,out] = ode45(@(t,output) AircraftEOM(tSpan, output, controls, wind, aircraft_parameters),tSpan,stateVector);
-% %Make plots
-% fig = 13:18;
-% a = ones(size(t,1));
-% b = a(1,:);
-% c = (controls*b);
-% PlotAircraftSim(t, out, c, fig, '-b')
+%% 2.1
+%set input vectors
+stateVector = [0; 0; -1609.34; 0; 0; 0; 21; 0; 0; 0; 0; 0];
+controls = [0; 0; 0; 0];
+wind = [0; 0; 0];
+
+%Simulate the trim dynamics
+[t,out] = ode45(@(t,output) AircraftEOM(t, output, controls, wind, aircraft_parameters),tSpan,stateVector);
+%Make plots
+fig = 1:6;
+a = ones(size(t,1));
+b = a(1,:);
+c = (controls*b);
+PlotAircraftSim(t, out, c, fig, '-b')
+
+%% 2.2
+%set input vectors
+stateVector = [0; 0; -1800; 0; 0.02780*180/pi; 0; 20.99; 0; 0.5837; 0; 0; 0];
+controls = [0.1079; 0; 0; 0.3182];
+wind = [0; 0; 0];
+
+%Simulate the trim dynamics
+[t,out] = ode45(@(t,output) AircraftEOM(t, output, controls, wind, aircraft_parameters),tSpan,stateVector);
+%Make plots
+fig = 7:12;
+a = ones(size(t,1));
+b = a(1,:);
+c = (controls*b);
+PlotAircraftSim(t, out, c, fig, '-b')
+
+%% 2.3
+%set input vectors
+stateVector = [0; 0; -1800; 15; -12; 270; 19; 3; -2; 0.08; -0.2; 0];
+controls = [5; 2; -13; 0.3];
+wind = [0; 0; 0];
+
+%Simulate the trim dynamics
+[t,out] = ode45(@(t,output) AircraftEOM(t, output, controls, wind, aircraft_parameters),tSpan,stateVector);
+%Make plots
+fig = 13:18;
+a = ones(size(t,1));
+b = a(1,:);
+c = (controls*b);
+PlotAircraftSim(t, out, c, fig, '-b')
 
 %% 3.1
 % tSpan = 0:3;
-tSpan = linspace(0,3,100);
+tSpan = linspace(0,3,200);
 
 stateVector = [0; 0; -1800; 0; 0.02780*180/pi; 0; 20.99; 0; 0.5837; 0; 0; 0];
 controls = [rad2deg(0.1079); 0; 0; 0.3182];
@@ -64,7 +64,7 @@ doublet_size = 15;
 % doublet_size = 15;
 doublet_time = .25;
 %Simulate the trim dynamics
-[t,out] = ode45(@(t,output) AircraftEOMDoublet(tSpan, output, controls, doublet_size, doublet_time, wind, aircraft_parameters),tSpan,stateVector);
+[t,out] = ode45(@(t,output) AircraftEOMDoublet(t, output, controls, doublet_size, doublet_time, wind, aircraft_parameters),tSpan,stateVector);
 %Make plots
 fig = 19:24;
 a = ones(size(t,1));
@@ -85,7 +85,7 @@ PlotAircraftSim(t, out, c, fig, '-b')
 
 %% 3.2
 % tSpan = 0:100;
-tSpan = linspace(0,100,400);
+tSpan = linspace(0,100,1000);
 
 % stateVector = [0; 0; -1800; 0; 0.02780*180/pi; 0; 20.99; 0; 0.5837; 0; 0; 0];
 % controls = [5; 2; -13; 0.3];
@@ -94,7 +94,7 @@ controls = [rad2deg(0.1079); 0; 0; 0.3182];
 wind = [0; 0; 0];
 doublet_time = 0.25;
 %Simulate the trim dynamics
-[t,out] = ode45(@(t,output) AircraftEOMDoublet(tSpan, output, controls, doublet_size, doublet_time, wind, aircraft_parameters),tSpan,stateVector);
+[t,out] = ode45(@(t,output) AircraftEOMDoublet(t, output, controls, doublet_size, doublet_time, wind, aircraft_parameters),tSpan,stateVector);
 %Make plots
 fig = 25:30;
 a = ones(size(t,1));
