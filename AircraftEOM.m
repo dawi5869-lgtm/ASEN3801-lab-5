@@ -38,7 +38,7 @@ velocity = [u; v; w];
 angularVelocity = [p; q; r];
 
 %find xDot, yDot, zDot
-mat1 = [cosd(theta)*cosd(psi) (sind(phi)*sind(theta)*sind(psi) - cosd(phi)*sind(psi)) (cosd(phi)*sind(theta)*cosd(psi) - sind(phi)*sind(psi));
+mat1 = [cosd(theta)*cosd(psi) (sind(phi)*sind(theta)*cosd(psi) - cosd(phi)*sind(psi)) (cosd(phi)*sind(theta)*cosd(psi) + sind(phi)*sind(psi));
     cosd(theta)*sind(psi) (sind(phi)*sind(theta)*sind(psi) + cosd(phi)*cosd(psi)) (cosd(phi)*sind(theta)*sind(psi) - sind(phi)*cosd(psi));
     -sind(theta) sind(phi)*cosd(theta) cosd(phi)*cosd(theta)];
 
