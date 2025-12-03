@@ -39,7 +39,7 @@ PlotAircraftSim(t, out, c, fig, '-b')
 
 %% 2.3
 %set input vectors
-stateVector = [0; 0; -1800; 15; -12; 270; 19; 3; -2; 0.08; -0.2; 0];
+stateVector = [0; 0; -1800; deg2rad(15); deg2rad(-12); deg2rad(270); 19; 3; -2; 0.08; -0.2; 0];
 controls = [5; 2; -13; 0.3];
 wind = [0; 0; 0];
 
