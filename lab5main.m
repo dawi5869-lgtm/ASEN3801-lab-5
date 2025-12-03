@@ -24,7 +24,7 @@ PlotAircraftSim(t, out, c, fig, '-b')
 
 %% 2.2
 %set input vectors
-stateVector = [0; 0; -1800; 0; 0.02780*180/pi; 0; 20.99; 0; 0.5837; 0; 0; 0];
+stateVector = [0; 0; -1800; 0; 0.02780; 0; 20.99; 0; 0.5837; 0; 0; 0];
 controls = [0.1079; 0; 0; 0.3182];
 wind = [0; 0; 0];
 
@@ -56,11 +56,11 @@ PlotAircraftSim(t, out, c, fig, '-b')
 % tSpan = 0:3;
 tSpan = linspace(0,3,200);
 
-stateVector = [0; 0; -1800; 0; 0.02780*180/pi; 0; 20.99; 0; 0.5837; 0; 0; 0];
-controls = [rad2deg(0.1079); 0; 0; 0.3182];
+stateVector = [0; 0; -1800; 0; 0.02780; 0; 20.99; 0; 0.5837; 0; 0; 0];
+controls = [0.1079; 0; 0; 0.3182];
 % controls = [5; 2; -13; 0.3];
 wind = [0; 0; 0];
-doublet_size = 15;
+doublet_size = deg2rad(15);
 % doublet_size = 15;
 doublet_time = .25;
 %Simulate the trim dynamics
@@ -80,8 +80,9 @@ for i = 1:length(t)
         c(1,i) = controls(1);
     end
 end
+c(1,:) = rad2deg(c(1,:));
 
-PlotAircraftSim(t, out, c, fig, '-b')
+PlotAircraftSim(t, out, (c), fig, '-b')
 
 %% 3.2
 % tSpan = 0:100;
@@ -89,8 +90,8 @@ tSpan = linspace(0,100,1000);
 
 % stateVector = [0; 0; -1800; 0; 0.02780*180/pi; 0; 20.99; 0; 0.5837; 0; 0; 0];
 % controls = [5; 2; -13; 0.3];
-stateVector = [0; 0; -1800; 0; 0.02780*180/pi; 0; 20.99; 0; 0.5837; 0; 0; 0];
-controls = [rad2deg(0.1079); 0; 0; 0.3182];
+stateVector = [0; 0; -1800; 0; 0.02780; 0; 20.99; 0; 0.5837; 0; 0; 0];
+controls = [0.1079; 0; 0; 0.3182];
 wind = [0; 0; 0];
 doublet_time = 0.25;
 %Simulate the trim dynamics
@@ -110,5 +111,6 @@ for i = 1:length(t)
         c(1,i) = controls(1);
     end
 end
+c(1,:) = rad2deg(c(1,:));
 
-PlotAircraftSim(t, out, c, fig, '-b')
+PlotAircraftSim(t, out, (c), fig, '-b')

@@ -38,23 +38,23 @@ velocity = [u; v; w];
 angularVelocity = [p; q; r];
 
 %find xDot, yDot, zDot
-mat1 = [cosd(theta)*cosd(psi) (sind(phi)*sind(theta)*cosd(psi) - cosd(phi)*sind(psi)) (cosd(phi)*sind(theta)*cosd(psi) + sind(phi)*sind(psi));
-    cosd(theta)*sind(psi) (sind(phi)*sind(theta)*sind(psi) + cosd(phi)*cosd(psi)) (cosd(phi)*sind(theta)*sind(psi) - sind(phi)*cosd(psi));
-    -sind(theta) sind(phi)*cosd(theta) cosd(phi)*cosd(theta)];
+mat1 = [cos(theta)*cos(psi) (sin(phi)*sin(theta)*cos(psi) - cos(phi)*sin(psi)) (cos(phi)*sin(theta)*cos(psi) + sin(phi)*sin(psi));
+    cos(theta)*sin(psi) (sin(phi)*sin(theta)*sin(psi) + cos(phi)*cos(psi)) (cos(phi)*sin(theta)*sin(psi) - sin(phi)*cos(psi));
+    -sin(theta) sin(phi)*cos(theta) cos(phi)*cos(theta)];
 
 %find phiDot, thetaDot, psiDot
-mat2 = [1 sind(phi)*tand(theta) cosd(phi)*tand(theta);
-    0 cosd(phi) -sind(phi);
-    0 sind(phi)*secd(theta) cosd(phi)*secd(theta)];
+mat2 = [1 sin(phi)*tan(theta) cos(phi)*tan(theta);
+    0 cos(phi) -sin(phi);
+    0 sin(phi)*sec(theta) cos(phi)*sec(theta)];
 
 %find uDot, vDot, wDot
 mat3 = [(r*v - q*w);
     (p*w - r*u);
     (q*u - p*v)];
 
-mat4 = g * [-sind(theta);
-    cosd(theta)*sind(phi);
-    cosd(theta)*cosd(phi)];
+mat4 = g * [-sin(theta);
+    cos(theta)*sin(phi);
+    cos(theta)*cos(phi)];
 
 mat5 = (1/m) * forces;
 

@@ -55,18 +55,18 @@ if(fig(2) >=1)
     figure(fig(2)); hold on;
     sgtitle('Aircraft orientation against time')
     subplot(3,1,1); hold on;
-    plot(time, aircraft_state_array(:,4), col);
-    ylabel('φ (rad)')
+    plot(time, rad2deg(aircraft_state_array(:,4)), col);
+    ylabel('φ (deg)')
     hold off;
 
     subplot(3,1,2); hold on;
-    plot(time, aircraft_state_array(:,5), col);
-    ylabel('θ (rad)')
+    plot(time, rad2deg(aircraft_state_array(:,5)), col);
+    ylabel('θ (deg)')
     hold off;
     
     subplot(3,1,3); hold on;
-    plot(time, aircraft_state_array(:,6), col);
-    ylabel('ψ (rad)');
+    plot(time, rad2deg(aircraft_state_array(:,6)), col);
+    ylabel('ψ (deg)');
     xlabel('Time (s)');
     hold off
 end
